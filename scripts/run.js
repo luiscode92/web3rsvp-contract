@@ -28,21 +28,21 @@ const main = async () => {
     let eventID = wait.events[0].args.eventID;
     console.log("EVENT ID:", eventID);
 
-    txn = await rsvpContract.createNewRSPV(eventID, { value: deposit });
+    txn = await rsvpContract.createNewRSVP(eventID, { value: deposit });
     wait = await txn.wait();
-    console.log("NEW RSVP:", wait.event[0].event, wait.events[0].args);
-
+    console.log("NEW RSVP:", wait.events[0].event, wait.events[0].args);
+    
     txn = await rsvpContract
-        .connect(address1)
-        .createNewRSPV(eventID, { value: deposit });
+      .connect(address1)
+      .createNewRSVP(eventID, { value: deposit });
     wait = await txn.wait();
-    console.log("NEW RSVP:", wait.event[0].event, wait.events[0].args);
-
+    console.log("NEW RSVP:", wait.events[0].event, wait.events[0].args);
+    
     txn = await rsvpContract
-        .connect(address2)
-        .createNewRSPV(eventID, { value: deposit });
+      .connect(address2)
+      .createNewRSVP(eventID, { value: deposit });
     wait = await txn.wait();
-    console.log("NEW RSVP", wait.event[0].event, wait.events[0].args);
+    console.log("NEW RSVP:", wait.events[0].event, wait.events[0].args);
 
     txn = await rsvpContract.confirmAllAttendees(eventID);
     wait = await txn.wait();
