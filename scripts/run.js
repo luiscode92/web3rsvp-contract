@@ -11,7 +11,7 @@ const main = async () => {
     ////
     const [deployer, address1, address2] = await hre.ethers.getSigners();
 
-    let deposit = hre.ethers.utils.parseEther("1");
+    let deposit = hre.ethers.utils.parseEther("0.1");
     let maxCapacity = 3;
     let timestamp = 1718926200;
     let eventDataCID = "bafybeibhwfzx6oo5rymsxmkdxpmkfwyvbjrrwcl7cekmbzlupmp5ypkyfi";
@@ -22,6 +22,7 @@ const main = async () => {
         maxCapacity,
         eventDataCID
     );
+
     let wait = await txn.wait();
     console.log("NEW EVENT CREATED:", wait.events[0].event, wait.events[0].args);
 
